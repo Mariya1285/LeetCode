@@ -11,7 +11,6 @@ class MinStack:
         self.st.pop()
 
     def top(self) -> int:
-        print(self.st[-1])
         return self.st[-1]
 
     def getMin(self) -> int:
