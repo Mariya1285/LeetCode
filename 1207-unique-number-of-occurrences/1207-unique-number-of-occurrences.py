@@ -11,8 +11,8 @@ class Solution:
             
 #         return True
 
-
-        return len(set(dict(Counter(arr)).values()))==len(dict(Counter(arr)))
+        x = dict(Counter(arr))
+        return len(set(x.values()))==len(dict(x))
         
         
         
