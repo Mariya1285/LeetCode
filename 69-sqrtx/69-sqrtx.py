@@ -17,5 +17,5 @@ class Solution:
             
             mid=(start+end)//2
             
-        return end
+        return mid
             
