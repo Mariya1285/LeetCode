@@ -4,11 +4,6 @@ class Solution:
             digits[-1] = digits[-1]+1 
             return digits
         else:
-            # digits[-1] = 0
-            # for i in range(len(digits)-2,0,-1):
-            #     if digits[i]<9:
-            #         digits[-1] = digits[-1]+1 
-            #         return digits
             return str(int("".join([str(x) for x in digits]))+1)
                 
                 
