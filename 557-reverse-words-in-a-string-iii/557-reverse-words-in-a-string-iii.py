@@ -4,7 +4,12 @@ class Solution:
         temp=""
         while right<=len(s):
             if right==len(s) or s[right] == " ":
-                temp+=s[left:right][::-1]
+                new_r = right
+                new_l = left
+                while new_r>new_l:
+                    temp+=s[new_r-1]
+                    new_r-=1
+                # temp+=s[left:right][::-1]
                 left=right+1
                 if right!=len(s):
                     temp+=" "
