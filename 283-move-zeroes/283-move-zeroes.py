@@ -3,13 +3,18 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-
-        i = 0
-        j = 0
-        for j in range(len(nums)):
-            if nums[j] != 0:
-                temp = nums[j]
-                nums[j] = nums[i]
-                nums[i] = temp
-                
-                i+=1
+        if not all([x!=0 for x in nums]):
+            pivot, start = 0, 0
+            while start<len(nums):
+                if nums[start] == 0 and start!=len(nums)-1:
+                    if nums[pivot] !=0:
+                        pivot = start
+                    start+=1
+                else:
+                    if nums[pivot] == 0:
+                        nums[pivot] = nums[start]
+                        nums[start] = 0
+                        pivot=pivot+1
+                    start+=1
+        else:
+            pass
