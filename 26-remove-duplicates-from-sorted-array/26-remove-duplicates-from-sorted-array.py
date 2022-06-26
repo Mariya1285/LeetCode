@@ -7,16 +7,17 @@ class Solution:
                     start=end
                     end+=1
                 else:
-                    nums[end] = "_"
-                    end+=1
+                    # nums[end] = "_"
+                    # end+=1
+                    del nums[end]
             else:
                 start = end
                 end+=1
-        new_start = 0
+        # new_start = 0
 
-        while new_start<len(nums):
-            if nums[new_start] == "_":
-                del nums[new_start]
-            else:
-                new_start+=1
+        # while new_start<len(nums):
+        #     if nums[new_start] == "_":
+        #         del nums[new_start]
+        #     else:
+        #         new_start+=1
             
