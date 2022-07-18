@@ -5,20 +5,28 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        stack = []
-        temp = head
-        flag = True
-        while temp:
-            stack.append(temp.val)
-            temp = temp.next
-        while head:
-            ele = stack.pop()
-            if head.val == ele:
-                head = head.next
-            else:
-                print("False here: ",ele)
-                print(head.val)
-                flag = False
-                break
-              
-        return flag
+        fast = head
+        slow = head
+
+        # find middle
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+
+        # reverse second half
+        prev = None
+        while slow:
+            tmp = slow.next
+            slow.next = prev
+            prev = slow
+            slow = tmp
+
+        # check palindrome
+        left, right = head, prev
+        while right:
+            if left.val != right.val:
+                return False
+            left = left.next
+            right = right.next
+        return True
+            
