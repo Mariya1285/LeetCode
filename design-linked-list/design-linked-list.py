@@ -2,13 +2,14 @@ class LinkedNode():
     def __init__(self,val):
         self.val = val
         self.next = None
-
+        self.prev = None
 
 class MyLinkedList:
 
     def __init__(self):
         self.head = None
         self.length = 0
+        
     def get(self, index: int) -> int:
         print("length: ", self.length)
         if index>=self.length:
@@ -30,6 +31,8 @@ class MyLinkedList:
         else:
             new_node = LinkedNode(val)
             new_node.next = self.head
+            next_node = self.head
+            next_node.prev = new_node
             self.head = new_node
 
     def addAtTail(self, val: int) -> None:
@@ -40,7 +43,9 @@ class MyLinkedList:
             first_node = self.head
             while first_node.next:
                 first_node = first_node.next
-            first_node.next = LinkedNode(val)
+            new_node = LinkedNode(val)
+            first_node.next = new_node
+            new_node.prev = first_node
         
     def addAtIndex(self, index: int, val: int) -> None:        
         if index>self.length:
@@ -60,6 +65,7 @@ class MyLinkedList:
                     new_node = LinkedNode(val)
                     new_node.next = first_node.next
                     first_node.next = new_node
+                    new_node.prev = first_node
         
 
     def deleteAtIndex(self, index: int) -> None:
@@ -75,8 +81,10 @@ class MyLinkedList:
                 while index>1:
                     first_node = first_node.next
                     index-=1
-                first_node.next = first_node.next.next
-
+                next_node = first_node.next.next
+                first_node.next = next_node
+                if next_node:
+                    next_node.prev = first_node
 #print(MyLinkedList())
 # Your MyLinkedList object will be instantiated and called as such:
 # obj = MyLinkedList()
