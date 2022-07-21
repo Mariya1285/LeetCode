@@ -1,25 +1,22 @@
 class RandomizedSet:
 
     def __init__(self):
-        self.random_set = list()
-    
+        self.random_set = dict()
+
     def insert(self, val: int) -> bool:
         if val not in self.random_set:
-            self.random_set.append(val)
+            self.random_set[val] = True
             return True
         else:
             return False
-        
-
     def remove(self, val: int) -> bool:
         if val not in self.random_set:
             return False
         else:
-            self.random_set.remove(val)
+            del self.random_set[val]
             return True
-
     def getRandom(self) -> int:
-        return random.choice(self.random_set)
+        return random.choice(list(self.random_set.keys()))
 
 
 # Your RandomizedSet object will be instantiated and called as such:
